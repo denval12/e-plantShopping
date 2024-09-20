@@ -2,6 +2,13 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
+export const calculateTotalQuantity= () => {
+    const cart = useSelector(state => state.cart.items);
+    return cart.reduce((total, item) => {
+     const itemCost = parseFloat(item.cost.replace('$', '')); 
+     return total + item.quantity;
+ }, 0);
+};
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
@@ -14,6 +21,7 @@ const CartItem = ({ onContinueShopping }) => {
         return total + (itemCost * item.quantity);
     }, 0);
   };
+  
 
   const handleContinueShopping = (e) => {
    e.preventDefault();
@@ -48,7 +56,8 @@ const CartItem = ({ onContinueShopping }) => {
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
+        <h2 style={{ color: 'black' }}>Quantity: ${calculateTotalQuantity()}</h2>
+
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
