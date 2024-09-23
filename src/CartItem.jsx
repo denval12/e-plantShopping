@@ -56,8 +56,7 @@ const CartItem = ({ onContinueShopping }) => {
 
   return (
     <div className="cart-container">
-        <h2 style={{ color: 'black' }}>Quantity: ${calculateTotalQuantity()}</h2>
-
+      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
