@@ -8,7 +8,7 @@ import { calculateTotalQuantity } from './CartItem';
 function ProductList() {
     const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false); 
-    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [showPlants, setShowPlants] = useState(false); 
     const [addedToCart, setAddedToCart] = useState({});
     const totalQuantity = calculateTotalQuantity();
     const plantsArray = [
